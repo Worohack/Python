@@ -1,0 +1,14 @@
+Falta por ver de Python:
+    - Gráficos
+    - SQL
+    - Ver cómo hacer un "set" a una propiedad de una Clase
+    - Módulos: Ver como arreglar que python encuentre la ruta de los modulos sin hacer el import sys y luego el sys.path.append(). Es decir, 
+        modificar la variable de entorno PYTHONPATH y que no haya que hacer el anterior import en cada archivo de codigo que use un modulo.
+    - Web Scraping
+    - Entorno virtual
+    - Estadísticas
+    - Pandas
+    - Web Python
+    - Python con MongoDB
+    - API
+    - Construyendo APIs 

@@ -1,0 +1,17 @@
+Al igual que se ha creado una clase que represente a los usuarios con los que se va a trabajar por red,
+hay que crear otra clase que represente a los usuarios de la base de datos y que va a heredar de la 
+clase usuarios que se va a usar por red; con lo que habría que definir en la clase de usuarios de la 
+base de datos sólo aquellos campos que no existen en la otra clase usuarios:
+    
+    class UsuariosRed(BaseModel):
+        nombre_usuario: str
+        nombre: str
+        email: str
+        activo: bool
+
+    class UsuariosBD(UsuariosRed):
+        password: str
+
+Como creo que ya se ha dicho antes, el usuario por red tiene menos datos por seguridad ya que en la base
+de datos también existe la contraseña.
+Luego ya se puede hacer una búsqueda del usuario en la base de datos.
