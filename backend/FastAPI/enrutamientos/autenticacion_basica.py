@@ -1,8 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
 aut_basica = APIRouter(prefix="/autenticar")
+autenticacion = OAuth2PasswordBearer(tokenUrl="login")
 
 '''
 Como la clase de usuarios que se define abajo es la que se va a mover por toda la red, no se incluye la contraseña de acceso.
@@ -48,3 +49,7 @@ def busca_usuario(nombre_usuario: str):
         # Si existe, devuelve un objeto de la clase UsuariosBD con los datos del usuario encontrado
         
         return UsuariosBD(usuarios_bd[nombre_usuario])
+
+@aut_basica.post("/login")
+async def login(form: OAuth2PasswordRequestForm = Depends()):
+    pass

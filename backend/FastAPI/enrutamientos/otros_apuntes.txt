@@ -1,0 +1,21 @@
+Al igual que hemos creado una instancia a FastAPI, hay que crear otra instancia a OAuth2PasswordBearer. 
+En esta instancia hay que pasarle la URL que va a gestionar la autenticación (sin barras).
+    autenticacion = OAuth2PasswordBearer(tokenUrl="login")
+Ahora habría que implementar la operación de autenticación. Para ello, primero hay que importar otro módulo 
+de fastapi llamado Depends:
+    from fastapi import Depends
+Como el backend tiene que recibir el usuario y contraseña que envíe la persona que se está logeando, la 
+operación que hay que controlar es un POST, ya que la información fluye del cliente al servidor; en un GET
+la información fluye del servidor al cliente.
+    @aut_basica.post("/login")
+Como el OAuth2PasswordRequestForm se encarga de capturar el usuario y la contraseña, la función de la 
+operación debe recibir un parámetro que se ¿debe? llamar form del tipo OAuth2PasswordRequestForm y se le
+dice que este form, por defecto, va a proceder de Depends.
+El Depends sirve para que si nos autenticamos correctamente, dependiendo del usuario con el que hayamos 
+entrado nos permitirá hacer algunas cosas y otras no; es decir la autorización. En el caso del ejemplo,
+se está diciendo que no depende de nada.
+    async def login(form: OAuth2PasswordRequestForm = Depends()):
+En la función, lo primero que hay que hacer es capturar el usuario. Como el parámetro form hereda de 
+OAuth2PasswordRequestForm, éste tiene una serie de propiedades entre ellas "username" y "password" para 
+gestionar la recedpción de ambos datos.
+    form.username = 
